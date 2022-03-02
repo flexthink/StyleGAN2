@@ -15,11 +15,28 @@ jobs:
       # url: https://github.com/gradient-ai/stylegan2.git
       url: context.event.github.url
       ref: context.event.github.ref
+  UpdateTest:
+    resources:
+      instance-type: P4000
+    needs:
+      - CloneRepo
+    inputs:
+      stylegan2: CloneRepo.outputs.stylegan2
+    outputs:
+      generatedTest:
+        type: dataset
+        with:
+          ref: demo-dataset-test
+    uses: script@v1
+    with:
+      script: echo "Test test" > /outputs/demo-dataset-test/test.txt
+      image: tensorflow/tensorflow:1.14.0-gpu-py3    
   StyleGan2:
     resources:
       instance-type: P4000
     needs:
       - CloneRepo
+      - UpdateTest
     inputs:
       stylegan2: CloneRepo.outputs.stylegan2
     outputs:
