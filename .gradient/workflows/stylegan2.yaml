@@ -23,14 +23,14 @@ jobs:
     inputs:
       stylegan2: CloneRepo.outputs.stylegan2
     outputs:
-      generatedTest:
+      generatedFaces:
         type: dataset
         with:
-          ref: demo-dataset-test
+          ref: demo-dataset
     uses: script@v1
     with:
       script: |-
-        echo "Test test" > /outputs/generatedTest/test.txt
+        echo "Test test" > /outputs/generatedTest/test123.txt
       image: tensorflow/tensorflow:1.14.0-gpu-py3    
   StyleGan2:
     resources:
