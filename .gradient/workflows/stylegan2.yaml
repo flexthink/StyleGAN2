@@ -30,8 +30,9 @@ jobs:
     uses: script@v1
     with:
       script: |-
+        echo "This is a test"
         echo "Test test" > /outputs/generatedTest/test123.txt
-      image: alpine
+      image: bash:5
   StyleGan2:
     resources:
       instance-type: P4000
