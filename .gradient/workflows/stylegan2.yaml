@@ -23,7 +23,7 @@ jobs:
     inputs:
       stylegan2: CloneRepo.outputs.stylegan2
     outputs:
-      generatedFaces:
+      generatedTest:
         type: dataset
         with:
           ref: demo-dataset
